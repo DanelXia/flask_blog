@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table class="table table-hover">
+        <tr>
+            <th>编号</th>
+            <th>用户名</th>
+            <th>手机号</th>
+            <th>注册日期</th>
+            <th>操作</th>
+        </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.registdatetime }}</td>
+            <td>
+                <a class="btn btn-info" href="/blog/show_update/{{ user.userid }}" role="button">修改</a>
+                <a class="btn btn-danger" href="/blog/del/{{ user.userid }}" role="button">删除</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <h3>共有{{ number }}条数据</h3>
+{% endblock %}
